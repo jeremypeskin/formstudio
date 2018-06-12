@@ -85,6 +85,7 @@ export default {
   }
   .navbar-item {
     margin-right: 40px;
+    cursor:pointer;
   }
   .lower-by-2 {
     margin-bottom: -2px;

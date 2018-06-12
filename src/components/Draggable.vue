@@ -3,9 +3,13 @@
     <vue-draggable-resizable v-for="field in fields" class="draggable" :w="100" :h="30" :minh="10" v-on:dragging="onDrag" v-on:resizing="onResize" :parent="true">
       <div class="object-selector-modal" v-if="field.showObjectSelector">
         <v-select
+          placeholder="Select an object"
           v-model="field.object"
           @blur="field.showObjectSelector = !field.showObjectSelector"
           :options="['contact',
+                    'form.beneficiary.first_name',
+                    'form.beneficiary.middle_name',
+                    'form.beneficiary.last_name',
                     'contact.current_address',
                     'contact.mailing_address',
                     'contact.address',
@@ -20,7 +24,10 @@
       <a class="add-object-button" v-on:click="field.showObjectSelector = !field.showObjectSelector">
         <icon name="chevron-circle-down"></icon>
       </a>
-      {{ field.object }}
+      <p class="field-label">
+        {{ field.object }}
+      </p>
+
     </vue-draggable-resizable>
   </div>
 </template>
@@ -73,5 +80,11 @@ export default {
     width: 450px;
     top: -120px;
     left: -3px;
+  }
+  .field-label {
+    font-size: 12px;
+    color: rgb(144, 144, 144);
+    display: inline;
+    padding-left: 5px;
   }
 </style>
