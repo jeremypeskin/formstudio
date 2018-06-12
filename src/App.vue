@@ -3,7 +3,18 @@
     <div id="navbar-container">
       <ul id="navbar">
         <li>
-          <a v-on:click="addField">Add Field</a>
+          <a class="navbar-item" v-on:click="addField">
+            <icon class="lower-by-2" name="align-left"></icon>
+            Field
+          </a>
+          <a class="navbar-item">
+            <icon class="lower-by-1" name="check-square"></icon>
+            Checkbox
+          </a>
+          <a class="navbar-item">
+            <icon class="lower-by-2" name="list"></icon>
+            Select
+          </a>
         </li>
       </ul>
     </div>
@@ -71,5 +82,18 @@ export default {
     left: 0px;
     right: 0px;
     z-index: -1;
+  }
+  .navbar-item {
+    margin-right: 40px;
+  }
+  .lower-by-2 {
+    margin-bottom: -2px;
+  }
+  .lower-by-1 {
+    margin-bottom: -1px;
+  }
+  .fa-icon {
+    width: auto;
+    height: .95em;
   }
 </style>

@@ -4,6 +4,7 @@
       <div class="object-selector-modal" v-if="field.showObjectSelector">
         <v-select
           v-model="field.object"
+          @blur="field.showObjectSelector = !field.showObjectSelector"
           :options="['contact',
                     'contact.current_address',
                     'contact.mailing_address',
@@ -16,7 +17,9 @@
           >
         </v-select>
       </div>
-      <a class="add-object-button" v-on:click="field.showObjectSelector = !field.showObjectSelector">+</a>
+      <a class="add-object-button" v-on:click="field.showObjectSelector = !field.showObjectSelector">
+        <icon name="chevron-circle-down"></icon>
+      </a>
       {{ field.object }}
     </vue-draggable-resizable>
   </div>
@@ -54,18 +57,20 @@ export default {
 
 <style>
   .draggable {
-    border: 3px solid #000080;
+    border: 2px solid #000080;
   }
   .add-object-button {
     cursor: pointer;
-    color: #000080 !important;
+    color: #909090 !important;
+    margin-left: 2px;
+    padding-top: 5px;
   }
   .object-selector-modal {
     padding: 30px;
     background: #fafafa;
     box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
     position: absolute;
-    width: 400px;
+    width: 450px;
     top: -120px;
     left: -3px;
   }
