@@ -33,7 +33,8 @@ export default {
   methods: {
     addField: function(){
       this.fields.push({
-        showObjectSelector: false
+        showObjectSelector: false,
+        object: ""
       })
     }
   },
