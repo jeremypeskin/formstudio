@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 100vh; width: 100%;">
+  <div style="top: 0; left: 0; right: 0; bottom: 0; position:absolute">
     <vue-draggable-resizable :w="100" :h="10" :minh="10" v-on:dragging="onDrag" v-on:resizing="onResize" :parent="true">
       <p>New Field</p>
     </vue-draggable-resizable>

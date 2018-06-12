@@ -7,7 +7,12 @@
         </li>
       </ul>
     </div>
-    <Draggable></Draggable>
+    <div class="page-container">
+      <Draggable></Draggable>
+      <div class="form-container">
+        <img :src="require('./assets/images/form.jpg')" class="footer-img"/>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -38,5 +43,15 @@ export default {
   #navbar {
     list-style: none;
     margin: 0px;
+  }
+  .page-container {
+    width: 100%;
+    height: 100vh;
+  }
+  .form-container {
+    text-align: center;
+  }
+  img {
+    width: 80%;
   }
 </style>
