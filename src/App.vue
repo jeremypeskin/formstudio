@@ -3,12 +3,15 @@
     <div id="navbar-container">
       <ul id="navbar">
         <li>
-          <a>Add Field</a>
+          <a v-on:click="addField">Add Field</a>
         </li>
       </ul>
     </div>
     <div class="page-container">
-      <Draggable></Draggable>
+      <Draggable
+        :fields="fields"
+        >
+      </Draggable>
       <div class="form-container">
         <img :src="require('./assets/images/form.jpg')" class="footer-img"/>
       </div>
@@ -24,6 +27,14 @@ export default {
   name: 'app',
   data () {
     return {
+      fields:[]
+    }
+  },
+  methods: {
+    addField: function(){
+      this.fields.push({
+        showObjectSelector: false
+      })
     }
   },
   components: {
@@ -52,6 +63,12 @@ export default {
     text-align: center;
   }
   img {
-    width: 80%;
+    width: 1000px;
+    position: absolute;
+    top: 45px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: -1;
   }
 </style>
