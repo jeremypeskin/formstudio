@@ -24,7 +24,8 @@
         >
       </Draggable>
       <div class="form-container">
-        <img :src="require('./assets/images/form1.jpg')" class="footer-img"/>
+        <img :src="require('./assets/images/form2.jpg')" class="footer-img"/>
+        <!--<iframe :src="require('./assets/images/i360.jpg')" width="100%" height="100%">-->
       </div>
     </div>
   </div>
@@ -45,7 +46,8 @@ export default {
     addField: function(){
       this.fields.push({
         showObjectSelector: false,
-        object: ""
+        object: "",
+        number: 100
       })
     }
   },
@@ -62,6 +64,8 @@ export default {
     background: #fafafa;
     padding: 10px;
     border-bottom: 1px solid #e1e1e1;
+    position:fixed;
+    z-index:1;
   }
   #navbar {
     list-style: none;
@@ -69,19 +73,16 @@ export default {
   }
   .page-container {
     width: 100%;
-    height: 100vh;
+    position:relative;
+    min-height: 100%;
+    background: #fafafa;
+    padding-top: 50px;
   }
   .form-container {
-    text-align: center;
   }
   img {
     width: 1000px;
-    position: absolute;
-    top: 45px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    z-index: -1;
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
   }
   .navbar-item {
     margin-right: 40px;

@@ -1,6 +1,6 @@
 <template>
-  <div style="top: 45px; left: 0; right: 0; bottom: 0; position:absolute;">
-    <vue-draggable-resizable v-for="field in fields" class="draggable" :w="100" :h="30" :minh="10" v-on:dragging="onDrag" v-on:resizing="onResize" :parent="true">
+  <div style="position:absolute; height:100%; width: 100%; top:0; left:0; margin-top:50px">
+    <vue-draggable-resizable v-for="field in fields" class="draggable" :w="100" :h="30" :minh="10" v-on:dragging="onDrag" v-on:resizing="onResize" :y="field.number">
       <div class="object-selector-modal" v-if="field.showObjectSelector">
         <v-select
           placeholder="Select an object"
