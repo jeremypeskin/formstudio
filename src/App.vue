@@ -44,10 +44,12 @@ export default {
   },
   methods: {
     addField: function(){
+      var position = window.pageYOffset;
+      console.log(position)
       this.fields.push({
         showObjectSelector: false,
         object: "",
-        number: 100
+        number: position
       })
     }
   },
