@@ -3,31 +3,35 @@
     <vue-draggable-resizable v-for="field in fields" class="draggable" :w="100" :h="30" :minh="10" v-on:dragging="onDrag" v-on:resizing="onResize" :y="field.number">
       <div class="object-selector-modal" v-if="field.showObjectSelector">
         <v-select
-          placeholder="Select an object"
-          v-model="field.object"
-          @blur="field.showObjectSelector = !field.showObjectSelector"
-          :options="['contact',
-                    'form.beneficiary.first_name',
-                    'form.beneficiary.middle_name',
-                    'form.beneficiary.last_name',
-                    'contact.current_address',
-                    'contact.mailing_address',
-                    'contact.address',
-                    'contact.phone_number',
-                    'contact.email',
-                    'contact.first_name',
-                    'contact.last_name',
-                    'contact.middle_name',]"
-          >
+        placeholder="Select an object"
+        v-model="field.object"
+        @blur="field.showObjectSelector = !field.showObjectSelector"
+        :options="['contact',
+        'form.beneficiary.first_name',
+        'form.beneficiary.middle_name',
+        'form.beneficiary.last_name',
+        'contact.current_address',
+        'contact.mailing_address',
+        'contact.address',
+        'contact.phone_number',
+        'contact.email',
+        'contact.first_name',
+        'contact.last_name',
+        'contact.middle_name',]"
+        >
         </v-select>
       </div>
       <a class="add-object-button" v-on:click="field.showObjectSelector = !field.showObjectSelector">
         <icon name="chevron-circle-down"></icon>
       </a>
-      <p class="field-label">
-        {{ field.object }}
-      </p>
-
+      <div class="field" v-if="field.type == 'field'">
+        <p class="field-label">
+          {{ field.object }}
+        </p>
+      </div>
+      <div class="checkbox" v-if="field.type == 'checkbox'">
+        <input type="checkbox" />
+      </div>
     </vue-draggable-resizable>
   </div>
 </template>
@@ -63,14 +67,16 @@ export default {
 </script>
 
 <style>
-  .draggable {
+  .field {
     border: 2px solid #000080;
+    height: 100%;
   }
   .add-object-button {
     cursor: pointer;
     color: #909090 !important;
-    margin-left: 2px;
-    padding-top: 5px;
+    position: absolute;
+    left: -15px;
+    top: 5px;
   }
   .object-selector-modal {
     padding: 30px;
@@ -85,6 +91,6 @@ export default {
     font-size: 12px;
     color: rgb(144, 144, 144);
     display: inline;
-    padding-left: 5px;
+    padding-left: 20px;
   }
 </style>

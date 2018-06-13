@@ -3,15 +3,15 @@
     <div id="navbar-container">
       <ul id="navbar">
         <li>
-          <a class="navbar-item" v-on:click="addField">
+          <a class="navbar-item" v-on:click="addField('field')">
             <icon class="lower-by-2" name="align-left"></icon>
             Field
           </a>
-          <a class="navbar-item">
+          <a class="navbar-item" v-on:click="addField('checkbox')">
             <icon class="lower-by-1" name="check-square"></icon>
             Checkbox
           </a>
-          <a class="navbar-item">
+          <a class="navbar-item" v-on:click="addField('field')">
             <icon class="lower-by-2" name="list"></icon>
             Select
           </a>
@@ -43,13 +43,14 @@ export default {
     }
   },
   methods: {
-    addField: function(){
+    addField: function(type){
       var position = window.pageYOffset;
       console.log(position)
       this.fields.push({
         showObjectSelector: false,
         object: "",
-        number: position
+        number: position,
+        type: type
       })
     }
   },
