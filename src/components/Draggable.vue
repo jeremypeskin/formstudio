@@ -1,24 +1,53 @@
 <template>
-  <div style="position:absolute; height:100%; width: 100%; top:0; left:0; margin-top:50px">
+  <div style="position:absolute; top:0; left:0; margin-top:50px">
     <vue-draggable-resizable v-for="field in fields" class="draggable" :w="100" :h="30" :minh="10" v-on:dragging="onDrag" v-on:resizing="onResize" :y="field.number">
+
+      <div class="populate-modal" v-if="field.showPopulator">
+        <v-select
+        v-if="field.object.type==='contact'"
+        placeholder="Select a contact"
+        :options='contacts'
+        >
+        </v-select>
+        <v-select
+        v-if="field.object.type==='address'"
+        placeholder="Select an address"
+        :options='addresses'
+        >
+        </v-select>
+        <v-select
+        v-if="field.object.type==='phone'"
+        placeholder="Select a phone number"
+        :options='phone_numbers'
+        >
+        </v-select>
+      </div>
+
       <div class="object-selector-modal" v-if="field.showObjectSelector">
         <v-select
         label="name"
         placeholder="Select an object"
         v-model="field.object"
-        @blur="field.showObjectSelector = !field.showObjectSelector"
         :options='objects'
         >
         </v-select>
       </div>
+
+
       <a class="add-object-button" v-on:click="field.showObjectSelector = !field.showObjectSelector">
         <icon name="chevron-circle-down"></icon>
       </a>
       <div class="field" v-if="field.type == 'field'">
         <input class="field-label" :placeholder='field.object.name'/>
-        <icon v-if="field.object.type=='contact'" class='populateIcon' name="user"></icon>
-        <icon v-if="field.object.type=='address'" class='populateIcon' name="address-book"></icon>
-        <icon v-if="field.object.type=='phone'" class='populateIcon' name="phone"></icon>
+        <a v-on:click="field.showPopulator = !field.showPopulator">
+          <icon v-if="field.object.type=='contact'" class='populateIcon' name="user"></icon>
+        </a>
+        <a v-on:click="field.showPopulator = !field.showPopulator">
+          <icon v-if="field.object.type=='address'" class='populateIcon' name="address-book"></icon>
+        </a>
+        <a v-on:click="field.showPopulator = !field.showPopulator">
+          <icon v-if="field.object.type=='phone'" class='populateIcon' name="phone"></icon>
+        </a>
       </div>
       <div class="checkbox" v-if="field.type == 'checkbox'">
         <input type="checkbox" />
@@ -40,6 +69,24 @@ export default {
       height: 0,
       x: 0,
       y: 0,
+      contacts: [
+        'Add New Contact+',
+        'John Doe',
+        'Jane Doe',
+        'Philip Cross'
+      ],
+      addresses: [
+        'Add New Address+',
+        '1920 Kater St, Philadelphia PA 10032',
+        '142 W. 81st St, New York NY 10012',
+        '210 Rosemary Rd. Toronto, ON M5N 1P7'
+      ],
+      phone_numbers: [
+        'Add New Phone Number+',
+        '212 545 2233',
+        '434 111 2211',
+        '555 234 1211'
+      ],
       objects: [
       {
         name:'contact',
@@ -120,6 +167,15 @@ export default {
     top: 5px;
   }
   .object-selector-modal {
+    padding: 30px;
+    background: #fafafa;
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    width: 450px;
+    top: -120px;
+    left: -3px;
+  }
+  .populate-modal {
     padding: 30px;
     background: #fafafa;
     box-shadow:0 0 10px rgba(0, 0, 0, 0.5);

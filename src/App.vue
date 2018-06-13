@@ -25,7 +25,6 @@
       </Draggable>
       <div class="form-container">
         <img :src="require('./assets/images/form2.jpg')" class="footer-img"/>
-        <!--<iframe :src="require('./assets/images/i360.jpg')" width="100%" height="100%">-->
       </div>
     </div>
   </div>
@@ -48,6 +47,7 @@ export default {
       console.log(position)
       this.fields.push({
         showObjectSelector: false,
+        showPopulator: false,
         object: "",
         number: position,
         type: type
