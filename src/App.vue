@@ -24,7 +24,7 @@
         >
       </Draggable>
       <div class="form-container">
-        <img :src="require('./assets/images/form.jpg')" class="footer-img"/>
+        <img :src="require('./assets/images/form1.jpg')" class="footer-img"/>
       </div>
     </div>
   </div>
