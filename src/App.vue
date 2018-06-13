@@ -75,9 +75,6 @@ export default {
     margin: 0px;
   }
   .page-container {
-    width: 100%;
-    position:relative;
-    min-height: 100%;
     background: #fafafa;
     padding-top: 50px;
   }

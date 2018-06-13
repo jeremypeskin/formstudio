@@ -3,21 +3,11 @@
     <vue-draggable-resizable v-for="field in fields" class="draggable" :w="100" :h="30" :minh="10" v-on:dragging="onDrag" v-on:resizing="onResize" :y="field.number">
       <div class="object-selector-modal" v-if="field.showObjectSelector">
         <v-select
+        label="name"
         placeholder="Select an object"
         v-model="field.object"
         @blur="field.showObjectSelector = !field.showObjectSelector"
-        :options="['contact',
-        'form.beneficiary.first_name',
-        'form.beneficiary.middle_name',
-        'form.beneficiary.last_name',
-        'contact.current_address',
-        'contact.mailing_address',
-        'contact.address',
-        'contact.phone_number',
-        'contact.email',
-        'contact.first_name',
-        'contact.last_name',
-        'contact.middle_name',]"
+        :options='objects'
         >
         </v-select>
       </div>
@@ -25,9 +15,10 @@
         <icon name="chevron-circle-down"></icon>
       </a>
       <div class="field" v-if="field.type == 'field'">
-        <p class="field-label">
-          {{ field.object }}
-        </p>
+        <input class="field-label" :placeholder='field.object.name'/>
+        <icon v-if="field.object.type=='contact'" class='populateIcon' name="user"></icon>
+        <icon v-if="field.object.type=='address'" class='populateIcon' name="address-book"></icon>
+        <icon v-if="field.object.type=='phone'" class='populateIcon' name="phone"></icon>
       </div>
       <div class="checkbox" v-if="field.type == 'checkbox'">
         <input type="checkbox" />
@@ -49,6 +40,56 @@ export default {
       height: 0,
       x: 0,
       y: 0,
+      objects: [
+      {
+        name:'contact',
+        type:''
+        },
+      {
+        name:'form.beneficiary.first_name',
+        type:'contact'
+      },
+      {
+        name:'form.beneficiary.middle_name',
+        type:'contact'
+      },
+      {
+        name:'form.beneficiary.last_name',
+        type:'contact'
+      },
+      {
+        name:'contact.current_address',
+        type:'address'
+        },
+      {
+        name:'contact.mailing_address',
+        type:'address'
+      },
+      {
+        name:'contact.address',
+        type:'address'
+      },
+      {
+        name:'contact.phone_number',
+        type:'phone'
+      },
+      {
+        name:'contact.email',
+        type:'email'
+      },
+      {
+        name:'contact.first_name',
+        type:'contact'
+      },
+      {
+        name:'contact.last_name',
+        type:'contact'
+      },
+      {
+        name:'contact.middle_name',
+        type:'contact'
+      }
+      ]
     }
   },
   methods: {
@@ -73,7 +114,7 @@ export default {
   }
   .add-object-button {
     cursor: pointer;
-    color: #909090 !important;
+    color: #e1e1e1  !important;
     position: absolute;
     left: -15px;
     top: 5px;
@@ -89,8 +130,16 @@ export default {
   }
   .field-label {
     font-size: 12px;
-    color: rgb(144, 144, 144);
+    color: black;
     display: inline;
-    padding-left: 20px;
+    padding-left: 5px;
+    width: 100%;
+    height: 101%;
+  }
+  .populateIcon {
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    color: #909090;
   }
 </style>
