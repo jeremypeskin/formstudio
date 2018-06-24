@@ -2,19 +2,35 @@
   <div>
     <div id="navbar-container">
       <ul id="navbar">
-        <li>
-          <a class="navbar-item" v-on:click="addField('field')">
+        <li class="navbar-item">
+          <input placeholder='Untitled Form'/>
+        </li>
+        <li class="navbar-item">
+          <a v-on:click="addField('field')">
             <icon class="lower-by-2" name="align-left"></icon>
             Field
           </a>
-          <a class="navbar-item" v-on:click="addField('checkbox')">
+        </li>
+        <li class="navbar-item">
+          <a v-on:click="addField('field')">
+            <icon class="lower-by-2" name="align-left"></icon>
+            Textarea
+          </a>
+        </li>
+        <li class="navbar-item">
+          <a v-on:click="addField('checkbox')">
             <icon class="lower-by-1" name="check-square"></icon>
             Checkbox
           </a>
-          <a class="navbar-item" v-on:click="addField('field')">
+        </li>
+        <li class="navbar-item">
+          <a v-on:click="addField('field')">
             <icon class="lower-by-2" name="list"></icon>
             Select
           </a>
+        </li>
+        <li class="navbar-item">
+          <button class="btn-green">PUBLISH</button>
         </li>
       </ul>
     </div>
@@ -74,11 +90,12 @@ export default {
     list-style: none;
     margin: 0px;
   }
+  #navbar li {
+    display:inline-block;
+  }
   .page-container {
     background: #fafafa;
     padding-top: 50px;
-  }
-  .form-container {
   }
   img {
     width: 1000px;
@@ -97,5 +114,10 @@ export default {
   .fa-icon {
     width: auto;
     height: .95em;
+  }
+  .btn-green {
+    background: #60d3c2;
+    border: 1px solid #60d3c2;
+    color: white;
   }
 </style>
